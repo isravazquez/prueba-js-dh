@@ -6,22 +6,21 @@
            * pendiente
          )
 */
+const fs = require('fs')
+path = 'tareas.json'
+let tareas = JSON.parse(fs.readFileSync(path, 'utf-8'))
 
 exports.leerTareas = function () {
-    /*
-        En esta función debes leer y retornar las tareas registradas.
-    */
+    return tareas
 }
 
 exports.agregarTarea = function (tarea) {
-    /*
-        Registra y guarda una nueva tarea.
-    */
+    tareas.push(tarea)
 }
 
 exports.filtrarTareasPorEstado = function (estado) {
-    /*
-        En esta función debes de leer las tareas y retornar las que tengan el estado que se
-        manda en el parametro.
-    */
+    return tareas.filter(function(tarea){
+        return tarea.status == estado
+    })
 }
+
